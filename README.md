@@ -111,7 +111,7 @@ curl -O https://gitea.myclocd.host:16666/jueti/reinstall/raw/branch/main/reinsta
 
 用 IE 下载 (先在 IE 高级设置里启用 TLS 1.2)，或者通过远程桌面，将这两个文件保存到同一个目录
 
-- <https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.bat>
+- <https://raw.githubusercontent.com/jueti/reinstall/main/reinstall.bat>
 
 - <https://www.cygwin.com/setup-x86.exe>
 
@@ -122,13 +122,13 @@ curl -O https://gitea.myclocd.host:16666/jueti/reinstall/raw/branch/main/reinsta
 国外服务器：
 
 ```batch
-certutil -urlcache -f -split https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.bat
+certutil -urlcache -f -split https://raw.githubusercontent.com/jueti/reinstall/main/reinstall.bat
 ```
 
 国内服务器：
 
 ```batch
-certutil -urlcache -f -split https://cnb.cool/bin456789/reinstall/-/git/raw/main/reinstall.bat
+certutil -urlcache -f -split https://gitea.myclocd.host:16666/jueti/reinstall/raw/branch/main/reinstall.bat
 ```
 
 ## 使用
