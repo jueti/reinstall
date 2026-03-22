@@ -101,6 +101,7 @@ if "%is4kn%"=="1" (
     set EFISize=100
 )
 
+set BootType=efi
 rem 重新分区/格式化
 (if "%BootType%"=="efi" (
     echo select disk %DiskIndex%
@@ -118,7 +119,7 @@ rem 重新分区/格式化
     echo create part msr size=16
 
     echo create part primary
-    echo format fs=ntfs quick
+    echo format fs=refs quick
     rem echo assign letter=Z
 ) else (
     echo select disk %DiskIndex%
