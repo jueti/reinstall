@@ -6632,7 +6632,7 @@ EOF
             virtio_source=msi
         fi
 
-        baseurl=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads
+        baseurl=https://dufs.myclocd.host:16666/virtio-win/direct-downloads
 
         if [ "$virtio_source" = iso ]; then
             download $baseurl/$dir/virtio-win.iso $drv/virtio.iso
