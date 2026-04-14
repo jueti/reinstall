@@ -3115,6 +3115,12 @@ modify_windows() {
     # bat 列表
     bats=
 
+    # 下载 wimlib
+    if [ "$compact_lzx" = 1 ]; then
+        download https://dufs.myclocd.host:16666/wimlib-imagex.exe $os_dir/wimlib-imagex.exe
+        download https://dufs.myclocd.host:16666/libwim-15.dll $os_dir/libwim-15.dll
+    fi
+
     # 1. rdp 端口
     if is_need_change_rdp_port; then
         create_win_change_rdp_port_script $os_dir/windows-change-rdp-port.bat "$rdp_port"
@@ -7124,12 +7130,6 @@ EOF
     wim_autounattend_xml=$(get_path_in_correct_case /wim/autounattend.xml)
     wim_windows_xml=$(get_path_in_correct_case /wim/windows.xml)
     wim_setup_exe=$(get_path_in_correct_case /wim/setup.exe)
-
-    # 下载 wimlib
-    if [ "$compact_lzx" = 1 ]; then
-        download https://dufs.myclocd.host:16666/wimlib-imagex.exe /wim/wimlib-imagex.exe
-        download https://dufs.myclocd.host:16666/libwim-15.dll /wim/libwim-15.dll
-    fi
 
     apk add xmlstarlet
     xmlstarlet ed -d '//comment()' /tmp/autounattend.xml >$wim_autounattend_xml
