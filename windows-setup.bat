@@ -114,6 +114,7 @@ rem 重新分区/格式化
 
     echo create part efi size=%EFISize%
     echo format fs=fat32 quick
+    echo assign letter=S
 
     echo create part msr size=16
 
@@ -136,6 +137,7 @@ diskpart /s X:\diskpart.txt
 del X:\diskpart.txt
 
 rem 盘符
+rem S efi
 rem X boot.wim (ram)
 rem Y installer
 rem Z os
@@ -218,8 +220,21 @@ if "%EnableEMS%"=="1" (
     set EMS=/EMSPort:COM1 /EMSBaudRate:115200
 )
 
-echo on
-%setup% %ResizeRecoveryPartition% %EMS% %Unattended%
+if exist X:\wimlib-imagex.exe (
+    rem 使用wimlib部署，需要手动修复启动项
+    rem 尝试手动处理
+    echo 默认：
+    echo     %setup% %ResizeRecoveryPartition% %EMS% %Unattended%
+    echo lzx + BIOS:
+    echo     X:\wimlib-imagex.exe apply Y:\install.esd 2 Z: --compact=lzx
+    echo     bootrec /fixmbr
+    echo lzx + EFI:
+    echo     X:\wimlib-imagex.exe apply Y:\install.esd 2 Z: --compact=lzx
+    echo     bcdboot Z:\Windows /s S: /f UEFI
+) else (
+    echo on
+    %setup% %ResizeRecoveryPartition% %EMS% %Unattended%
+)
 exit /b
 
 :sleep

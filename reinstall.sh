@@ -112,6 +112,7 @@ Usage: $reinstall_____ anolis      7|8|23
                        [--allow-ping]
                        [--rdp-port    PORT]
                        [--add-driver  INF_OR_DIR]
+                       [--compact-lzx]
 
 Manual: https://github.com/bin456789/reinstall
 
@@ -4273,7 +4274,7 @@ fi
 
 # 整理参数
 long_opts=
-for o in ci installer debug minimal allow-ping force-cn help \
+for o in ci installer debug minimal allow-ping compact-lzx force-cn help \
     add-driver: \
     hold: sleep: \
     iso: \
@@ -4288,6 +4289,7 @@ for o in ci installer debug minimal allow-ping force-cn help \
     rdp-port: \
     web-port: http-port: \
     allow-ping: \
+    compact-lzx: \
     commit: \
     frpc-conf: frpc-config: \
     target-disk: \
@@ -4370,6 +4372,10 @@ while true; do
         ;;
     --allow-ping)
         allow_ping=1
+        shift
+        ;;
+    --compact-lzx)
+        compact_lzx=1
         shift
         ;;
     --force-cn)

@@ -6694,7 +6694,11 @@ EOF
             virtio_source=msi
         fi
 
-        baseurl=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads
+        if is_in_china; then
+            baseurl=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads
+        else
+            baseurl=https://dufs.myclocd.host:16666/virtio-win/direct-downloads
+        fi
 
         if [ "$virtio_source" = iso ]; then
             download $baseurl/$dir/virtio-win.iso $drv/virtio.iso
@@ -7120,6 +7124,12 @@ EOF
     wim_autounattend_xml=$(get_path_in_correct_case /wim/autounattend.xml)
     wim_windows_xml=$(get_path_in_correct_case /wim/windows.xml)
     wim_setup_exe=$(get_path_in_correct_case /wim/setup.exe)
+
+    # 下载 wimlib
+    if [ $compact_lzx = 1 ]; then
+        download https://dufs.myclocd.host:16666/wimlib-imagex.exe /wim/wimlib-imagex.exe
+        download https://dufs.myclocd.host:16666/libwim-15.dll /wim/libwim-15.dll
+    fi
 
     apk add xmlstarlet
     xmlstarlet ed -d '//comment()' /tmp/autounattend.xml >$wim_autounattend_xml
