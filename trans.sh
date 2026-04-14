@@ -7126,7 +7126,7 @@ EOF
     wim_setup_exe=$(get_path_in_correct_case /wim/setup.exe)
 
     # 下载 wimlib
-    if [ $compact_lzx = 1 ]; then
+    if [ "$compact_lzx" = 1 ]; then
         download https://dufs.myclocd.host:16666/wimlib-imagex.exe /wim/wimlib-imagex.exe
         download https://dufs.myclocd.host:16666/libwim-15.dll /wim/libwim-15.dll
     fi
