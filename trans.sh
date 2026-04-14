@@ -273,6 +273,10 @@ is_allow_ping() {
     [ -n "$allow_ping" ] && [ "$allow_ping" = 1 ]
 }
 
+is_compact_lzx() {
+    [ -n "$compact_lzx" ] && [ "$compact_lzx" = 1 ]
+}
+
 setup_nginx() {
     apk add nginx
     # shellcheck disable=SC2154
@@ -3116,7 +3120,7 @@ modify_windows() {
     bats=
 
     # 下载 wimlib
-    if [ "$compact_lzx" = 1 ]; then
+    if is_compact_lzx; then
         download https://dufs.myclocd.host:16666/wimlib-imagex.exe $os_dir/wimlib-imagex.exe
         download https://dufs.myclocd.host:16666/libwim-15.dll $os_dir/libwim-15.dll
     fi
