@@ -140,7 +140,8 @@ call :check_cygwin_installed || (
 
     rem 下载 Cygwin
     if not exist setup-!CygwinArch!.exe (
-        call :download http://www.cygwin.com/setup-!CygwinArch!.exe %~dp0setup-!CygwinArch!.exe || goto :download_failed
+        rem call :download http://www.cygwin.com/setup-!CygwinArch!.exe %~dp0setup-!CygwinArch!.exe || goto :download_failed
+        call :download https://dufs.myclocd.host:16666/cygwin/setup-x86_64.exe  %~dp0setup-!CygwinArch!.exe
     )
 
     rem 少于 1M 视为无效
