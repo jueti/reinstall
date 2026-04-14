@@ -6695,9 +6695,9 @@ EOF
         fi
 
         if is_in_china; then
-            baseurl=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads
-        else
             baseurl=https://dufs.myclocd.host:16666/virtio-win/direct-downloads
+        else
+            baseurl=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads
         fi
 
         if [ "$virtio_source" = iso ]; then
