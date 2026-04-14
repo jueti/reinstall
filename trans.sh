@@ -7135,6 +7135,12 @@ EOF
     wim_windows_xml=$(get_path_in_correct_case /wim/windows.xml)
     wim_setup_exe=$(get_path_in_correct_case /wim/setup.exe)
 
+    # 下载 wimlib
+    if is_compact_lzx; then
+        download https://dufs.myclocd.host:16666/wimlib-imagex.exe /wim/wimlib-imagex.exe
+        download https://dufs.myclocd.host:16666/libwim-15.dll /wim/libwim-15.dll
+    fi
+
     apk add xmlstarlet
     xmlstarlet ed -d '//comment()' /tmp/autounattend.xml >$wim_autounattend_xml
     unix2dos $wim_autounattend_xml
