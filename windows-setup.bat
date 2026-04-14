@@ -226,10 +226,10 @@ if exist X:\wimlib-imagex.exe (
     echo 默认：
     echo     %setup% %ResizeRecoveryPartition% %EMS% %Unattended%
     echo lzx + BIOS:
-    echo     X:\wimlib-imagex.exe apply Y:\install.esd 2 Z: --compact=lzx
-    echo     bootrec /fixmbr
+    echo     X:\wimlib-imagex.exe apply Y:\install.esd 2 C: --compact=lzx
+    echo     bcdboot C:\Windows
     echo lzx + EFI:
-    echo     X:\wimlib-imagex.exe apply Y:\install.esd 2 Z: --compact=lzx
+    echo     X:\wimlib-imagex.exe apply Y:\install.esd 2 C: --compact=lzx
     echo     bcdboot Z:\Windows /s S: /f UEFI
 ) else (
     echo on
