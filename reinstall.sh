@@ -6,7 +6,7 @@
 # alpine 默认没有 bash，因此 shebang 用 sh，再 exec 切换到 bash
 
 set -eE
-confhome=https://raw.githubusercontent.com/bin456789/reinstall/main
+confhome=https://raw.githubusercontent.com/jueti/reinstall/cn
 confhome_cn=https://gh.llkk.cc/https://raw.githubusercontent.com/jueti/reinstall/cn
 # confhome_cn=https://www.ghproxy.cc/https://raw.githubusercontent.com/bin456789/reinstall/main
 

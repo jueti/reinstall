@@ -2,7 +2,7 @@
 mode con cp select=437 >nul
 setlocal EnableDelayedExpansion
 
-set confhome=https://raw.githubusercontent.com/bin456789/reinstall/main
+set confhome=https://raw.githubusercontent.com/jueti/reinstall/cn
 set confhome_cn=https://gh.llkk.cc/https://raw.githubusercontent.com/jueti/reinstall/cn
 rem set confhome_cn=https://www.ghproxy.cc/https://raw.githubusercontent.com/bin456789/reinstall/main
 
