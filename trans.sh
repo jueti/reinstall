@@ -632,7 +632,7 @@ is_any_ipv4_has_internet() {
 }
 
 is_in_china() {
-    grep -q 1 /dev/netconf/*/is_in_china
+    return 0
 }
 
 # 有 dhcpv4 不等于有网关，例如 vultr 纯 ipv6

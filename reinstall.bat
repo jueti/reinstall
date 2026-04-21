@@ -34,38 +34,41 @@ rem if not exist %tmp% (
 rem     md %tmp%
 rem )
 
-rem 下载 geoip
-if not exist geoip (
-    rem www.cloudflare.com/dash.cloudflare.com 国内访问的是美国服务器，而且部分地区被墙
-    call :download http://www.qualcomm.cn/cdn-cgi/trace %~dp0geoip || goto :download_failed
-)
+@REM rem 下载 geoip
+@REM if not exist geoip (
+@REM     rem www.cloudflare.com/dash.cloudflare.com 国内访问的是美国服务器，而且部分地区被墙
+@REM     call :download http://www.qualcomm.cn/cdn-cgi/trace %~dp0geoip || goto :download_failed
+@REM )
 
-rem 判断是否有 loc=
-findstr /c:"loc=" geoip >nul
-if errorlevel 1 (
-    echo Invalid geoip file
-    del geoip
-    exit /b 1
-)
+@REM rem 判断是否有 loc=
+@REM findstr /c:"loc=" geoip >nul
+@REM if errorlevel 1 (
+@REM     echo Invalid geoip file
+@REM     del geoip
+@REM     exit /b 1
+@REM )
 
-rem 检查是否国内
-findstr /c:"loc=CN" geoip >nul
-if not errorlevel 1 (
-    rem mirrors.tuna.tsinghua.edu.cn 会强制跳转 https
-    set mirror=http://mirror.nju.edu.cn
-    if defined confhome_cn (
-        set confhome=!confhome_cn!
-    ) else if defined github_proxy (
-        echo !confhome! | findstr /c:"://raw.githubusercontent.com/" >nul
-        if not errorlevel 1 (
-            set confhome=!confhome:http://=https://!
-            set confhome=!confhome:https://raw.githubusercontent.com=%github_proxy%!
-        )
-    )
-) else (
-    rem 服务器在美国 equinix 机房，不是 cdn
-    set mirror=http://mirrors.kernel.org
-)
+@REM rem 检查是否国内
+@REM findstr /c:"loc=CN" geoip >nul
+@REM if not errorlevel 1 (
+@REM     rem mirrors.tuna.tsinghua.edu.cn 会强制跳转 https
+@REM     set mirror=http://mirror.nju.edu.cn
+@REM     if defined confhome_cn (
+@REM         set confhome=!confhome_cn!
+@REM     ) else if defined github_proxy (
+@REM         echo !confhome! | findstr /c:"://raw.githubusercontent.com/" >nul
+@REM         if not errorlevel 1 (
+@REM             set confhome=!confhome:http://=https://!
+@REM             set confhome=!confhome:https://raw.githubusercontent.com=%github_proxy%!
+@REM         )
+@REM     )
+@REM ) else (
+@REM     rem 服务器在美国 equinix 机房，不是 cdn
+@REM     set mirror=http://mirrors.kernel.org
+@REM )
+
+mirror=http://mirror.nju.edu.cn
+confhome=!confhome_cn!
 
 call :check_cygwin_installed || (
     rem win10 arm 支持运行 x86 软件
