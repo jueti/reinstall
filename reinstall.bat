@@ -67,8 +67,8 @@ rem )
 @REM     set mirror=http://mirrors.kernel.org
 @REM )
 
-mirror=http://mirror.nju.edu.cn
-confhome=!confhome_cn!
+set mirror=http://mirror.nju.edu.cn
+set confhome=!confhome_cn!
 
 call :check_cygwin_installed || (
     rem win10 arm 支持运行 x86 软件
