@@ -67,7 +67,7 @@ rem )
 @REM     set mirror=http://mirrors.kernel.org
 @REM )
 
-set mirror=http://mirrors.kernel.org
+set mirror=http://mirror.nju.edu.cn
 set confhome=!confhome_cn!
 
 call :check_cygwin_installed || (
